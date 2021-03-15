@@ -1,1 +1,1 @@
-<html>coba</html>
+@extends("layouts.global")
