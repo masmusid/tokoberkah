@@ -10,7 +10,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>TokoBerkah @yield("title")</title> {{-- title tab --}}
     
-
+    <link rel="stylesheet" type="text/css" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" type="text/css" href="{{asset("/polished/polished.min.css")}}">
     <link rel="stylesheet" type="text/css" href="{{asset("/polished/iconic/css/open-iconic-bootstrap.min.css")}}">
 
@@ -40,12 +40,14 @@
         document.documentElement.className = document.documentElement.className.replace('no-js', 'js') + (document
             .implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1") ? ' svg' : ' no-svg');
     </script>
+    
+
 </head>
 
 <body>
     <nav class="navbar navbar-expand p-2">
         <a class="navbar-brand text-center col-xs-12 col-md-3 col-lg-2 mr-0"
-            href="{{ route('home') }}"> Toko Berkah </a>
+            href="{{ route('home') }}"> Toko Berkah </a>            
         <button class="btn btn-link d-block d-md-none" datatoggle="collapse" data-target="#sidebar-nav" role="button">
             <span class="oi oi-menu"></span>
         </button>
@@ -78,13 +80,14 @@
 
     <div class="container-fluid h-100 p-0">
         <div style="min-height: 100%" class="flex-row d-flex align-itemsstretch m-0">
-            <div class="polished-sidebar bg-light col-12 col-md-3 col-lg-2 p-
-        0 collapse d-md-inline" id="sidebar-nav">
+            <div class="polished-sidebar bg-light col-12 col-md-3 col-lg-2 p-0 collapse d-md-inline" id="sidebar-nav">
                 <ul class="polished-sidebar-menu ml-0 pt-4 p-0 d-md-block">
-                    <input class="border-dark form-control d-block d-md-none
-        mb-4" type="text" placeholder="Search" aria-label="Search" />
-                    <li><a href="{{asset("/")}}"><span class="oi oi-home"></span>
-                            Home</a></li>
+                    <input class="border-dark form-control d-block d-md-none mb-4" type="text" placeholder="Search" aria-label="Search" />
+                    <li><a href="{{asset("/home")}}"><span class="oi oi-home"></span>Home</a></li>
+                    <li><a href="{{route('users.index')}}"><span class="oi oi-people"></span> Manage Users</a></li>
+                    <li><a href="{{route('categories.index')}}"><span class="oi oi-tags"></span>Manage Categories</a></li>
+                    <li><a href="{{route('suppliers.index')}}"><span class="oi oi-people"></span>Manage Suppliers</a></li>
+                    <li><a href="{{route('barang.index')}}"><span class="oi oi-list"></span>Barang</a></li>
                     <div class="d-block d-md-none">
                         <div class="dropdown-divider"></div>
                         <li><a href="#"> Profile</a></li>
@@ -115,7 +118,6 @@
         </div>
     </div>
 
-
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
         </script>
@@ -127,6 +129,8 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
             integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
         </script>
+    
+    @yield("footer-scripts")
 </body>
 
 </html>

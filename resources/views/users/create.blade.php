@@ -1,7 +1,13 @@
 @extends("layouts.global")
 @section("title") Create New User @endsection
+@section("pageTitle") Create New User @endsection
 @section("content")
 <div class="col-md-8">
+    @if(session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
     <form enctype="multipart/form-data" class="bg-white shadow-sm p-3"
         action="{{ route('users.store') }}" method="POST">
         @csrf
