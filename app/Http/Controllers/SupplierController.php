@@ -12,10 +12,10 @@ class SupplierController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $suppliers = \App\Models\Supplier::paginate(10);
-        $filterKeyword = $request->get('nama');
+        $filterKeyword = $request->get('name');
         if($filterKeyword)
         {
             $suppliers = \App\Models\Supplier::where("nama", "LIKE", "%$filterKeyword%")->paginate(10);
@@ -49,7 +49,7 @@ class SupplierController extends Controller
         $new_supplier->telp = $request->get('telp');
         $new_supplier->save();
 
-        return redirect()->route('suppliers.create')->with('status', 'Supplier successfully Created');
+        return redirect()->route('suppliers.index')->with('status', 'Supplier successfully Created');
     }
 
     /**

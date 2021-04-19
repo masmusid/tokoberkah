@@ -153,10 +153,8 @@
         });
 
         var suppliers = {!! $barang->Suppliers !!}
-        suppliers.forEach(function(supplier){
-          var option = new Option(supplier.nama, supplier.id, true, true);
+          var option = new Option(suppliers.nama, suppliers.id, true, true);
           $('#supplier').append(option).trigger('change');
-        });
 
       </script>
 @endsection

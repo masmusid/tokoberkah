@@ -115,7 +115,7 @@ class BarangController extends Controller
     public function update(Request $request, $id)
     {
         $nama=$request->get('nama');
-        $barang =new \App\Models\barang;
+        $barang = \App\Models\barang::findOrFail($id);
         $barang->supplier_id = $request->get('supplier');
         $barang->nama = $nama;
 

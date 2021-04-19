@@ -21,37 +21,23 @@
 
     <div class="col-md-6">
         <ul class="nav nav-pills card-header-pills">
-          <li class="nav-item">
-            <a class="nav-link {{Request::get('status') == NULL && Request::path() == 'barang' ? 'active' : ''}}" href="{{route('barang.index')}}">All</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link {{Request::get('status') == 'publish' ? 'active' : '' }}" href="{{route('barang.index', ['status' => 'publish'])}}">Publish</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {{Request::get('status') == 'draft' ? 'active' : '' }}" href="{{route('barang.index', ['status' => 'draft'])}}">Draft</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {{Request::path() == 'barang/trash' ? 'active' : ''}}" href="{{route('barang.trash')}}">Trash</a>
-          </li>
+            <li class="nav-item">
+                <a class="nav-link {{Request::get('status') == NULL && Request::path() == 'barang' ? 'active' : ''}}"
+                    href="{{route('barang.index')}}">All</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{Request::get('status') == 'publish' ? 'active' : '' }}"
+                    href="{{route('barang.index', ['status' => 'publish'])}}">Publish</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{Request::get('status') == 'draft' ? 'active' : '' }}"
+                    href="{{route('barang.index', ['status' => 'draft'])}}">Draft</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{Request::path() == 'barang/trash' ? 'active' : ''}}"
+                    href="{{route('barang.trash')}}">Trash</a>
+            </li>
         </ul>
-      </div>
-    </div>
-
-    <div class="row">           
-        <div class="col-md-6">
-            <form action="{{ route('barang.index') }}">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Filter by nama barang " value="{{Request::get('nama')}}" name="nama">
-                    <div class="input-group-append">
-                        <input type="submit" value="Filter" class="btn btn-primary">
-                    </div>
-                </div>
-            </form>        
-        </div>
-
-        <div class="col-md-6 text-right">
-            <a href="{{ route('barang.create') }}" class="btn btn-primary">Tambah barang</a>
-        </div>
     </div>
 
     <hr class="my-3">
@@ -97,11 +83,11 @@
                             <td>{{$item->harga}}</td>
                             <td>{{$item->qty}}</td>
                             <td>
-                                <form method="POST" action="{{route('barang.restore', [$barang->id])}}" class="d-inline">
+                                <form method="POST" action="{{route('barang.restore', [$item->id])}}" class="d-inline">
                                     @csrf
-                                    <input type="submit" value="Restore" class="btn btn-success" />
+                                    <input type="submit" value="Restore" class="btn btn-success btn-sm" />
                                 </form>
-                                <form method="POST" action="{{route('barang.delete-permanent', [$barang->id])}}"
+                                <form method="POST" action="{{route('barang.delete-permanent', [$item->id])}}"
                                     class="d-inline" onsubmit="return confirm('Delete this item permanently?')">
                                     @csrf
                                     <input type="hidden" name="_method" value="DELETE">

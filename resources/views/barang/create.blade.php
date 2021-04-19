@@ -55,7 +55,7 @@
         <br>
 
         <label for="satuan">Satuan</label><br>
-        <input value="{{old('satuan')}}" type="text" class="form-control {{$errors->first('satuan') ? "is-invalid" : ""}} " name="satuan" placeholder="Satuan">
+        <input name="satuan" value="{{old('satuan')}}" type="text" class="form-control {{$errors->first('satuan') ? "is-invalid" : ""}} "  placeholder="Satuan">
         <div class="invalid-feedback">
             {{$errors->first('satuan')}}
         </div>

@@ -2,7 +2,24 @@
 @section('title') Barang list @endsection
 @section('pageTitle')Barang List @endsection
 @section('content')
-<div class="row">
+
+    <div class="row">           
+        <div class="col-md-6">
+            <form action="{{ route('barang.index') }}">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Filter by nama barang " value="{{Request::get('nama')}}" name="nama">
+                    <div class="input-group-append">
+                        <input type="submit" value="Filter" class="btn btn-primary">
+                    </div>
+                </div>
+            </form>        
+        </div>
+
+        <div class="col-md-6 text-right">
+            <a href="{{ route('barang.create') }}" class="btn btn-primary">Tambah barang</a>
+        </div>
+    </div>
+
     <div class="col-md-6"></div>
         <div class="col-md-6">
         <ul class="nav nav-pills card-header-pills">
@@ -23,24 +40,6 @@
                     href="{{ route('barang.trash') }}">Trash</a>
             </li>
         </ul>
-    </div>
-</div>
-
-    <div class="row">           
-        <div class="col-md-6">
-            <form action="{{ route('barang.index') }}">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Filter by nama barang " value="{{Request::get('nama')}}" name="nama">
-                    <div class="input-group-append">
-                        <input type="submit" value="Filter" class="btn btn-primary">
-                    </div>
-                </div>
-            </form>        
-        </div>
-
-        <div class="col-md-6 text-right">
-            <a href="{{ route('barang.create') }}" class="btn btn-primary">Tambah barang</a>
-        </div>
     </div>
 
     <hr class="my-3">

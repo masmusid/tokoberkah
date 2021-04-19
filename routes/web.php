@@ -26,7 +26,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource("users", UserController::class);
 
-Route::delete('/barang/{id}/delete-permanent', [BookController::class,'deletePermanent'])->name('barang.delete-permanent');
+Route::delete('/barang/{id}/delete-permanent', [BarangController::class,'deletePermanent'])->name('barang.delete-permanent');
 Route::post('/barang/{barang}/restore', [BarangController::class, 'restore'])->name('barang.restore');
 Route::get('/barang/trash', [BarangController::class, 'trash'])->name('barang.trash');
 Route::resource("barang", BarangController::class);
