@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\CategoryController;
@@ -36,3 +37,5 @@ Route::get('/ajax/categories/search', [CategoryController::class, 'ajaxSearch'])
 
 Route::resource('suppliers', SupplierController::class);
 Route::get('/ajax/suppliers/search', [SupplierController::class, 'ajaxSearch']);
+
+Route::resource('orders', OrderController::class);

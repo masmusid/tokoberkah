@@ -137,7 +137,7 @@ class BarangController extends Controller
         $barang->satuan=$request->get('satuan');
         $barang->exp_date=$request->get('exp_date');
         $barang->status = $request->get('status');
-        $barang->created_by= \Auth::user()->id;
+        $barang->updated_by= \Auth::user()->id;
         $barang->save();
 
         $barang->categories()->sync($request->get('categories'));

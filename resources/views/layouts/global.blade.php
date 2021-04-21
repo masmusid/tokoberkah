@@ -86,8 +86,9 @@
                     <li><a href="{{asset("/home")}}"><span class="oi oi-home"></span>Home</a></li>
                     <li><a href="{{route('users.index')}}"><span class="oi oi-people"></span> Manage Users</a></li>
                     <li><a href="{{route('categories.index')}}"><span class="oi oi-tags"></span>Manage Categories</a></li>
-                    <li><a href="{{route('suppliers.index')}}"><span class="oi oi-people"></span>Manage Suppliers</a></li>
+                    <li><a href="{{route('suppliers.index')}}"><span class="oi oi-connections"></span>Manage Suppliers</a></li>
                     <li><a href="{{route('barang.index')}}"><span class="oi oi-list"></span>Barang</a></li>
+                    <li><a href="{{route('orders.index')}}"><span class="oi oi-cart"></span>Manage Orders</a></li>
                     <div class="d-block d-md-none">
                         <div class="dropdown-divider"></div>
                         <li><a href="#"> Profile</a></li>
