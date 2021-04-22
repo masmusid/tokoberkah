@@ -42,6 +42,12 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
+        \Validator::make($request->all(), [
+            "nama" => "required|min:5|max:100",
+            "alamat" => "required|min:20|max:200",
+            "email" => "required|email|unique:suppliers",
+            "telp" => "required|digits_between:10,12"
+        ])->validate();
         $new_supplier = new \App\Models\Supplier;
         $new_supplier->nama = $request->get('nama');
         $new_supplier->alamat = $request->get('alamat');
@@ -85,6 +91,13 @@ class SupplierController extends Controller
      */
     public function update(Request $request, $id)
     {
+        \Validator::make($request->all(), [
+            "nama" => "required|min:5|max:100",
+            "alamat" => "required|min:20|max:200",
+            "email" => "required|email|unique:suppliers",
+            "telp" => "required|digits_between:10,12"
+        ])->validate();
+        
         $supplier = \App\Models\Supplier::FindOrFail($id);
 
         $supplier->nama = $request->get('nama');

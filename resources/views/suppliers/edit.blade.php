@@ -1,7 +1,6 @@
 @extends('layouts.global')
-
 @section('title') Edit Supplier @endsection 
-
+@section('pageTitle')Edit Supplier @endsection
 @section('content')
 
 <div class="row">
@@ -13,11 +12,8 @@
         </div>
     @endif 
 
-    <form 
-      action="{{route('suppliers.update', [$supplier->id])}}"
-      enctype="multipart/form-data"
-      method="POST"
-      class="p-3 shadow-sm bg-white">
+    <form action="{{route('suppliers.update', [$supplier->id])}}" enctype="multipart/form-data" method="POST"
+        class="p-3 shadow-sm bg-white">
 
       @csrf
 

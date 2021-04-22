@@ -32,7 +32,6 @@
         value="{{old('name') ? old('name') : $category->name}}" 
         name="name"
       >
-
       <div class="invalid-feedback">
         {{$errors->first('name')}}
       </div>
