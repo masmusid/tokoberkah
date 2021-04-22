@@ -30,10 +30,12 @@
         type="text" 
         class="form-control {{$errors->first('name') ? "is-invalid" : ""}}" 
         value="{{old('name') ? old('name') : $category->name}}" 
-        name="name">
-       <div class="invalid-feedback">
-          {{$errors->first('name')}}
-        </div>
+        name="name"
+      >
+
+      <div class="invalid-feedback">
+        {{$errors->first('name')}}
+      </div>
       <br><br>
 
       <label>Cateogry slug</label>

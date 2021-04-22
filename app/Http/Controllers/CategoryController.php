@@ -42,6 +42,11 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        \Validator::make($request->all(), [
+            "name" => "required|min:3|max:20",
+            "image" => "required"
+        ])->validate();
+
         $name = $request->get('name');
         $new_category = new \App\Models\Category;
         $new_category->name = $name;
@@ -85,16 +90,22 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $category = \App\Models\Category::findOrFail($id);
+
+        \Validator::make($request->all(), [
+            "name" => "required|min:3|max:20",
+            "slug" => ["required", Rule::unique("categories")->ignore($category->slug, "slug")]
+        ])->validate();
+
         $name = $request->get('name');
         $slug = $request->get('slug');
-        $category = \App\Models\Category::findOrFail($id);
 
         $category->name = $name;
         $category->slug = $slug;
 
         $category->slug = \Str::slug($name);
         $category->save();
-
+        //setelah selesai update kita kembalikan tampilan ke categories/index.blade.php
         return redirect()->route('categories.index')->with('status', 'Category successfully Update');
     }
 

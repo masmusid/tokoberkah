@@ -13,7 +13,10 @@
         @csrf
 
         <label>Nama kategori</label><br>
-        <input type="text" class="form-control" name="name">
+        <input value="{{old('name')}}" class="form-control {{$errors->first('name') ? "is-invalid" : ""}}" type="text" class="form-control" name="name">
+        <div class="invalid-feedback">
+            {{$errors->first('name')}}
+        </div>
         <br>
         <input type="submit" class="btn btn-primary" value="Save">
     </form>
