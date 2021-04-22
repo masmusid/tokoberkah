@@ -24,7 +24,10 @@
         
         <label for="Tambah_Foto">Tambah Foto</label>
         <div class="input-group mb-3">
-            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="Tambah_Foto" id="Tambah_Foto">
+            <input type="file" class="form-control-file {{$errors->first('Tambah_Foto') ? "is-invalid": ""}}" name="Tambah_Foto" id="Tambah_Foto">
+            <div class="invalid-feedback">
+              {{$errors->first('Tambah_Foto')}}
+            </div>  
         </div>
         <br>
         
@@ -37,11 +40,14 @@
         <br>
 
         <label for="categories">Categories</label><br>
-        <select name="categories[]" multiple id="categories" class="form-control"></select>
+        <select name="categories[]" multiple id="categories" class="form-control {{$errors->first('categories') ? "is-invalid": ""}}"></select>
+        <div class="invalid-feedback">
+            {{$errors->first('categories')}}
+        </div>
         <br><br>
 
         <label for="exp_date">Expired Date</label>
-        <input type="date" class="form-control" name="exp_date" value="{{ old('exp_date') }}">
+        <input type="date" class="form-control {{$errors->first('exp_date') ? "is-invalid": ""}}" name="exp_date" value="{{ old('exp_date') }}">
         <div class="invalid-feedback">
             {{$errors->first('exp_date')}}
         </div>
@@ -64,21 +70,22 @@
         <label for="harga">Harga</label> <br>
         <input value="{{old('harga')}}" type="number" class="form-control {{$errors->first('harga') ? "is-invalid" : ""}} " name="harga" id="harga" placeholder="Harga Barang">
         <div class="invalid-feedback">
-          {{$errors->first('harga')}}
+            {{$errors->first('harga')}}
         </div>
         <br>
 
         <label for="harga_supplier">Harga Supplier</label> <br>
         <input value="{{old('harga_supplier')}}" type="number" class="form-control {{$errors->first('harga_supplier') ? "is-invalid" : ""}} " name="harga_supplier" id="harga_supplier" placeholder="Harga Supplier">
         <div class="invalid-feedback">
-          {{$errors->first('harga_supplier')}}
+            {{$errors->first('harga_supplier')}}
         </div>
         <br>
 
-        
         <label>Supplayer</label> <br>
-        <select class="supplier form-control" name="supplier" id="supplier"></select>
-        
+        <select value="{{old('supplier')}}" class="supplier form-control {{$errors->first('supplier') ? "is-invalid": ""}}" name="supplier" id="supplier"></select>
+        <div class="invalid-feedback">
+            {{$errors->first('supplier')}}
+        </div>
         
         <br><br>
 

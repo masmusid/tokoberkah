@@ -59,6 +59,9 @@
 
         <label for="address">Address</label>
         <textarea name="address" id="address" class="form-control {{$errors->first('address') ? "is-invalid" : ""}}">{{old('address') ? old('address') : $user->address}}</textarea>
+        <div class="invalid-feedback">
+            {{$errors->first('address')}}
+        </div>
         <br>
 
         <label for="avatar">Avatar image</label>
@@ -71,14 +74,17 @@
             No avatar
         @endif
         <br>
-        <input id="avatar" name="avatar" type="file" class="form-control">
+        <input id="avatar" name="avatar" type="file" class="form-control {{$errors->first('avatar') ? "is-invalid" : ""}}">
         <small class="text-muted">Kosongkan jika tidak ingin mengubah avatar</small>
 
         <hr class="my-3">
         
         <label for="email">Email</label>
-        <input value="{{ $user->email }}" disabled class="form-control" placeholder="user@mail.com" type="text"
+        <input value="{{ $user->email }}" disabled class="form-control {{$errors->first('email') ? "is-invalid" : ""}}" placeholder="user@mail.com" type="text"
             name="email" id="email" />
+        <div class="invalid-feedback">
+            {{$errors->first('email')}}
+        </div>
         <br>
         
         <input class="btn btn-primary" type="submit" value="Save" />

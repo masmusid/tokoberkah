@@ -12,7 +12,7 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //Penggunaan method whereHas ini untuk mencari order berdasarkan dari email pembeli
         $status = $request->get('status');

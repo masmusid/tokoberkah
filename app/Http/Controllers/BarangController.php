@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 
 class BarangController extends Controller
@@ -45,6 +46,18 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
+        \Validator::make($request->all(), [
+            "nama" => "required|min:5|max:200",
+            "deskripsi" => "required|min:20|max:1000",
+            "harga" => "required|digits_between:0,10",
+            "harga_supplier" => "required|digits_between:0,10",
+            "qty" => "required|digits_between:0,10",
+            "satuan" => "required|min:3|max:20",
+            "exp_date" => "required|date",
+            "Tambah_Foto" => "required",
+            "supplier" => "required"
+        ])->validate();
+
         $nama=$request->get('nama');
         $new_barang =new \App\Models\barang;
         $new_barang->supplier_id = $request->get('supplier');
@@ -114,6 +127,18 @@ class BarangController extends Controller
      */
     public function update(Request $request, $id)
     {
+        \Validator::make($request->all(), [
+            "nama" => "required|min:5|max:200",
+            "deskripsi" => "required|min:20|max:1000",
+            "harga" => "required|digits_between:0,10",
+            "harga_supplier" => "required|digits_between:0,10",
+            "qty" => "required|digits_between:0,10",
+            "satuan" => "required|min:3|max:20",
+            "exp_date" => "required|date",
+            "Tambah_Foto" => "required",
+            "supplier" => "required"
+        ])->validate();
+
         $nama=$request->get('nama');
         $barang = \App\Models\barang::findOrFail($id);
         $barang->supplier_id = $request->get('supplier');
