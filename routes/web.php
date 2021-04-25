@@ -1,5 +1,9 @@
 <?php
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,3 +26,16 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource("users", UserController::class);
+
+Route::delete('/barang/{id}/delete-permanent', [BarangController::class,'deletePermanent'])->name('barang.delete-permanent');
+Route::post('/barang/{barang}/restore', [BarangController::class, 'restore'])->name('barang.restore');
+Route::get('/barang/trash', [BarangController::class, 'trash'])->name('barang.trash');
+Route::resource("barang", BarangController::class);
+
+Route::resource('categories', CategoryController::class);
+Route::get('/ajax/categories/search', [CategoryController::class, 'ajaxSearch']);
+
+Route::resource('suppliers', SupplierController::class);
+Route::get('/ajax/suppliers/search', [SupplierController::class, 'ajaxSearch']);
+
+Route::resource('orders', OrderController::class);
